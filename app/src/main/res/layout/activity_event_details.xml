@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2E2B4D"
-    tools:context=".NewActivity">
+    tools:context=".EventDetails">
 
     <LinearLayout
         android:id="@+id/LinearLayout"
@@ -20,10 +20,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/NewETxt"
+            android:id="@+id/DetailsETxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New Event"
+            android:text="Event Details"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
@@ -45,7 +45,7 @@
             android:backgroundTint="#FFFFFF"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Enter Event Name Here" />
+            android:text="MOBDEVE" />
 
         <TextView
             android:id="@+id/ELocationTxt"
@@ -65,7 +65,7 @@
             android:backgroundTint="#FFFFFF"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Enter Event Location Here" />
+            android:text="G301" />
 
         <TextView
             android:id="@+id/EDateTxt"
@@ -84,7 +84,8 @@
             android:background="#000000"
             android:backgroundTint="#FFFFFF"
             android:ems="10"
-            android:inputType="date" />
+            android:inputType="textPersonName"
+            android:text="03/17/2023"/>
 
         <TextView
             android:id="@+id/EDescTxt"
@@ -103,7 +104,7 @@
             android:backgroundTint="#FFFFFF"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Enter Event Description Here" />
+            android:text="Project Deliverable 2" />
 
     </LinearLayout>
 
@@ -141,7 +142,8 @@
                 android:background="#000000"
                 android:backgroundTint="#FFFFFF"
                 android:ems="10"
-                android:inputType="time" />
+                android:inputType="textPersonName"
+                android:text="00:00" />
 
             <TextView
                 android:id="@+id/EEndTimeTxt"
@@ -160,107 +162,10 @@
                 android:background="#000000"
                 android:backgroundTint="#FFFFFF"
                 android:ems="10"
-                android:inputType="time" />
+                android:inputType="textPersonName"
+                android:text="23:59" />
 
-            <TextView
-                android:id="@+id/RepeatNumberTxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="# of Repeats"
-                android:textColor="#FFFFFF"
-                android:textSize="17sp" />
-
-            <EditText
-                android:id="@+id/RepeatNumber"
-                android:layout_width="125dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:background="#000000"
-                android:backgroundTint="#FFFFFF"
-                android:ems="10"
-                android:inputType="number" />
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
-        app:layout_constraintTop_toBottomOf="@+id/LinearLayout">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/RepeatTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Repeat"
-                android:textColor="#FFFFFF"
-                android:textSize="17sp" />
-
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/RepeatTxt"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <RadioButton
-                    android:id="@+id/RBDaily"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="#FFFFFF"
-                    android:text="Daily"
-                    android:textColor="#FFFFFF" />
-
-                <RadioButton
-                    android:id="@+id/RBWeekly"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="#FFFFFF"
-                    android:text="Weekly"
-                    android:textColor="#FFFFFF" />
-
-                <RadioButton
-                    android:id="@+id/RBMonthly"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="#FFFFFF"
-                    android:text="Monthly"
-                    android:textColor="#FFFFFF" />
-
-                <RadioButton
-                    android:id="@+id/RBYearly"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="#FFFFFF"
-                    android:text="Yearly"
-                    android:textColor="#FFFFFF" />
-            </RadioGroup>
-
-        </LinearLayout>
-
-    </android.support.constraint.ConstraintLayout>
-
-    <Button
-        android:id="@+id/FinishBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="Register Event"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 </android.support.constraint.ConstraintLayout>

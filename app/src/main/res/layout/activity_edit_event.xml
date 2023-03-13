@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2E2B4D"
-    tools:context=".NewActivity">
+    tools:context=".EditEvent">
 
     <LinearLayout
         android:id="@+id/LinearLayout"
@@ -20,10 +20,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/NewETxt"
+            android:id="@+id/EditETxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New Event"
+            android:text="Edit Event"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
@@ -263,4 +263,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
 </android.support.constraint.ConstraintLayout>
