@@ -184,6 +184,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -191,45 +192,75 @@
         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
         app:layout_constraintTop_toBottomOf="@+id/LinearLayout">
 
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <RadioButton
-                android:id="@+id/RBDaily"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/RepeatTxt"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="#FFFFFF"
-                android:text="Daily"
-                android:textColor="#FFFFFF" />
+                android:text="Repeat"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp" />
 
-            <RadioButton
-                android:id="@+id/RBWeekly"
-                android:layout_width="match_parent"
+            <RadioGroup
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="#FFFFFF"
-                android:text="Weekly"
-                android:textColor="#FFFFFF" />
+                app:layout_constraintBottom_toTopOf="@+id/RepeatTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <RadioButton
-                android:id="@+id/RBMonthly"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="#FFFFFF"
-                android:text="Monthly"
-                android:textColor="#FFFFFF" />
+                <RadioButton
+                    android:id="@+id/RBDaily"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#FFFFFF"
+                    android:text="Daily"
+                    android:textColor="#FFFFFF" />
 
-            <RadioButton
-                android:id="@+id/RBYearly"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="#FFFFFF"
-                android:text="Yearly"
-                android:textColor="#FFFFFF" />
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/RBWeekly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#FFFFFF"
+                    android:text="Weekly"
+                    android:textColor="#FFFFFF" />
+
+                <RadioButton
+                    android:id="@+id/RBMonthly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#FFFFFF"
+                    android:text="Monthly"
+                    android:textColor="#FFFFFF" />
+
+                <RadioButton
+                    android:id="@+id/RBYearly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#FFFFFF"
+                    android:text="Yearly"
+                    android:textColor="#FFFFFF" />
+            </RadioGroup>
+
+        </LinearLayout>
+
     </android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/FinishBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register Event"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 </android.support.constraint.ConstraintLayout>
