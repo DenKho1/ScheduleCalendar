@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2E2B4D"
+    tools:context=".NewActivity">
+
+    <LinearLayout
+        android:id="@+id/LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/NewETxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Event"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/ENameTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Event Name"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/EName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="#000000"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Enter Event Name Here" />
+
+        <TextView
+            android:id="@+id/ELocationTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Event Location"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/ELocation"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="#000000"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Enter Event Location Here" />
+
+        <TextView
+            android:id="@+id/EDateTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Event Date"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/EDate"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="#000000"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:inputType="date" />
+
+        <TextView
+            android:id="@+id/EDescTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Event Description"
+            android:textColor="#DFDFDF"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/EDesc"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#000000"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Enter Event Description Here" />
+
+    </LinearLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LinearLayout">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/EStartTimeTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Event Start Time"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp" />
+
+            <EditText
+                android:id="@+id/EStartTIme"
+                android:layout_width="125dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="#000000"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:inputType="time" />
+
+            <TextView
+                android:id="@+id/EEndTimeTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Event End TIme"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp" />
+
+            <EditText
+                android:id="@+id/EEndTIme"
+                android:layout_width="125dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="#000000"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:inputType="time" />
+
+            <TextView
+                android:id="@+id/RepeatNumberTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="# of Repeats"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp" />
+
+            <EditText
+                android:id="@+id/RepeatNumber"
+                android:layout_width="125dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="#000000"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:inputType="number" />
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/LinearLayout">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/RBDaily"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="#FFFFFF"
+                android:text="Daily"
+                android:textColor="#FFFFFF" />
+
+            <RadioButton
+                android:id="@+id/RBWeekly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="#FFFFFF"
+                android:text="Weekly"
+                android:textColor="#FFFFFF" />
+
+            <RadioButton
+                android:id="@+id/RBMonthly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="#FFFFFF"
+                android:text="Monthly"
+                android:textColor="#FFFFFF" />
+
+            <RadioButton
+                android:id="@+id/RBYearly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="#FFFFFF"
+                android:text="Yearly"
+                android:textColor="#FFFFFF" />
+        </RadioGroup>
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>
