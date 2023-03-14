@@ -5,8 +5,8 @@
     android:id="@+id/base"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2E2B4D"
-    tools:context=".MainActivity" >
+    android:background="#2B2C44"
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -15,7 +15,7 @@
         android:layout_marginTop="28dp"
         android:shadowColor="#FFFFFF"
         android:text="Don't have an Account?"
-        android:textColor="#FFFFFF"
+        android:textColor="#D9CF77"
 
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/PasswordText"
@@ -28,7 +28,7 @@
         android:layout_width="355dp"
         android:layout_height="54dp"
         android:layout_marginTop="4dp"
-        android:backgroundTint="#9EC6A1"
+        android:backgroundTint="#D9CF77"
         android:shadowColor="#9EC6A1"
         android:text="Register"
         android:textColor="#1B1464"
@@ -42,7 +42,7 @@
         android:layout_height="62dp"
         android:layout_marginTop="44dp"
         android:text="Login"
-        android:textColor="#FFFEFE"
+        android:textColor="#D9CF77"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Username"
-        android:textColor="#F8F8F8"
+        android:textColor="#D9CF77"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.081"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Registration" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/Rusername"
         android:layout_width="345dp"
         android:layout_height="63dp"
         android:layout_marginTop="8dp"
@@ -84,16 +84,16 @@
         android:layout_marginTop="32dp"
         android:shadowColor="#FFFFFF"
         android:text="Password"
-        android:textColor="#FFFFFF"
+        android:textColor="#D9CF77"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/usernametext"
         app:layout_constraintHorizontal_bias="0.0"
 
         app:layout_constraintStart_toStartOf="@+id/usernametext"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/Rusername" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/Rpassword"
         android:layout_width="345dp"
         android:layout_height="63dp"
         android:layout_marginTop="8dp"
@@ -102,9 +102,9 @@
         android:ems="10"
         android:hint="Enter Password Here"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/username"
+        app:layout_constraintEnd_toEndOf="@+id/Rusername"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/username"
+        app:layout_constraintStart_toStartOf="@+id/Rusername"
         app:layout_constraintTop_toBottomOf="@+id/PasswordText" />
 
     <Button
@@ -112,12 +112,14 @@
         android:layout_width="355dp"
         android:layout_height="54dp"
         android:layout_marginTop="29dp"
-        android:backgroundTint="#9EC6A1"
-        android:shadowColor="#9EC6A1"
+        android:backgroundTint="#D9CF77"
+        android:shadowColor="#D9CF77"
         android:text="Login"
         android:textColor="#1B1464"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        android:textColorHighlight="#D9CF77"
+        android:textColorLink="#D9CF77"
+        app:layout_constraintEnd_toEndOf="@+id/Rpassword"
+        app:layout_constraintStart_toStartOf="@+id/Rpassword"
+        app:layout_constraintTop_toBottomOf="@+id/Rpassword" />
 
 </android.support.constraint.ConstraintLayout>

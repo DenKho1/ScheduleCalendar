@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2E2B4D"
+    android:background="#2B2C44"
     tools:context=".NewActivity">
 
     <LinearLayout
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="New Event"
-            android:textColor="#FFFFFF"
+            android:textColor="#D9CF77"
             android:textSize="20sp" />
 
         <TextView
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Event Name"
-            android:textColor="#FFFFFF"
+            android:textColor="#D9CF77"
             android:textSize="17sp" />
 
         <EditText
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Event Location"
-            android:textColor="#FFFFFF"
+            android:textColor="#D9CF77"
             android:textSize="17sp" />
 
         <EditText
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Event Date"
-            android:textColor="#FFFFFF"
+            android:textColor="#D9CF77"
             android:textSize="17sp" />
 
         <EditText
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Event Description"
-            android:textColor="#DFDFDF"
+            android:textColor="#D9CF77"
             android:textSize="17sp" />
 
         <EditText
@@ -130,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Event Start Time"
-                android:textColor="#FFFFFF"
+                android:textColor="#D9CF77"
                 android:textSize="17sp" />
 
             <EditText
@@ -149,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Event End TIme"
-                android:textColor="#FFFFFF"
+                android:textColor="#D9CF77"
                 android:textSize="17sp" />
 
             <EditText
@@ -168,7 +168,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="# of Repeats"
-                android:textColor="#FFFFFF"
+                android:textColor="#D9CF77"
                 android:textSize="17sp" />
 
             <EditText
@@ -206,7 +206,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Repeat"
-                android:textColor="#FFFFFF"
+                android:textColor="#D9CF77"
                 android:textSize="17sp" />
 
             <RadioGroup
@@ -223,7 +223,7 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="#FFFFFF"
                     android:text="Daily"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#D9CF77" />
 
                 <RadioButton
                     android:id="@+id/RBWeekly"
@@ -231,7 +231,7 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="#FFFFFF"
                     android:text="Weekly"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#D9CF77" />
 
                 <RadioButton
                     android:id="@+id/RBMonthly"
@@ -239,7 +239,7 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="#FFFFFF"
                     android:text="Monthly"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#D9CF77" />
 
                 <RadioButton
                     android:id="@+id/RBYearly"
@@ -247,7 +247,7 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="#FFFFFF"
                     android:text="Yearly"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#D9CF77" />
             </RadioGroup>
 
         </LinearLayout>
@@ -259,7 +259,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
+        android:background="#D9CF77"
         android:text="Register Event"
+        android:textColor="#1B1464"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />

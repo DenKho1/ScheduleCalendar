@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2E2B4D"
+    android:background="#2B2C44"
     tools:context=".EventDetails">
 
     <LinearLayout
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Event Details"
-            android:textColor="#FFFFFF"
+            android:textColor="#D9CF77"
             android:textSize="20sp" />
 
         <TextView
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Event Name"
-            android:textColor="#FFFFFF"
+            android:textColor="#D9CF77"
             android:textSize="17sp" />
 
         <EditText
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Event Location"
-            android:textColor="#FFFFFF"
+            android:textColor="#D9CF77"
             android:textSize="17sp" />
 
         <EditText
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Event Date"
-            android:textColor="#FFFFFF"
+            android:textColor="#D9CF77"
             android:textSize="17sp" />
 
         <EditText
@@ -85,7 +85,7 @@
             android:backgroundTint="#FFFFFF"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="03/17/2023"/>
+            android:text="03/17/2023" />
 
         <TextView
             android:id="@+id/EDescTxt"
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Event Description"
-            android:textColor="#DFDFDF"
+            android:textColor="#D9CF77"
             android:textSize="17sp" />
 
         <EditText
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Event Start Time"
-                android:textColor="#FFFFFF"
+                android:textColor="#D9CF77"
                 android:textSize="17sp" />
 
             <EditText
@@ -151,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Event End TIme"
-                android:textColor="#FFFFFF"
+                android:textColor="#D9CF77"
                 android:textSize="17sp" />
 
             <EditText

@@ -24,6 +24,9 @@
             android:name=".NewActivity"
             android:exported="false" />
         <activity
+            android:name=".Account"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity
