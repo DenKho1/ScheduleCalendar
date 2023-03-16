@@ -190,7 +190,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#D9CF77"
-            android:text="Sent Invites"
+            android:text="Send Invites"
             android:textColor="#1B1464" />
     </LinearLayout>
 
