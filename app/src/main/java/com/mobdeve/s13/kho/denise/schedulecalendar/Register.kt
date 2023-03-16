@@ -20,14 +20,19 @@ class Register : AppCompatActivity() {
             val cpassword = findViewById<EditText>(R.id.Rconfirmpassword)
             val email = findViewById<EditText>(R.id.Remail)
             val mobile = findViewById<EditText>(R.id.Rmobilenum)
-
+            val pass1=password.text.toString()
+            val pass2=cpassword.text.toString()
             if(name.text.isEmpty() || password.text.isEmpty() || cpassword.text.isEmpty() || email.text.isEmpty() || mobile.text.isEmpty())
              {
                 val toast=Toast.makeText(applicationContext,"Something is missing!",Toast.LENGTH_LONG)
                  toast.show()
              }
             //passwords dont match
-            else if (!password.text.equals(cpassword.text)) {
+            else if(!pass1.equals(pass2)) {
+                val pass=password.text
+                pass.append(" ")
+                pass.append(cpassword.text)
+
                 val toast=Toast.makeText(applicationContext,"Your Passwords' Do Not Match !",Toast.LENGTH_LONG)
                 toast.show()
             }
@@ -35,6 +40,9 @@ class Register : AppCompatActivity() {
             else
             {
                 val intent = Intent(this, Account::class.java)
+                intent.putExtra("Username",name.text.toString())
+                intent.putExtra("Email",email.text.toString())
+                intent.putExtra("Mobile",mobile.text.toString())
                 startActivity(intent)
             }
         }
