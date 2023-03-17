@@ -3,12 +3,16 @@ package com.mobdeve.s13.kho.denise.schedulecalendar
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 
 class Account : AppCompatActivity() {
+    private val inviteList: ArrayList<Invite> = InviteGenerator.genData()
+    private lateinit var recyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account)
@@ -21,6 +25,11 @@ class Account : AppCompatActivity() {
         email.text= intent.getStringExtra("Email")
         mobile.text= intent.getStringExtra("Mobile")
         icon.setImageResource(R.drawable.icon)
+
+        this.recyclerView = findViewById(R.id.accRecycler)
+        this.recyclerView.adapter = InviteAdapter(this.inviteList)
+        this.recyclerView.layoutManager = LinearLayoutManager(this)
+
 
         val register=findViewById<Button>(R.id.AccLogout)
 

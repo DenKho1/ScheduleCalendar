@@ -63,6 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/accEmail" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/accRecycler"
         android:layout_width="378dp"
         android:layout_height="450dp"
         app:layout_constraintBottom_toBottomOf="parent"
