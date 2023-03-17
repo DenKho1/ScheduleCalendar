@@ -19,7 +19,7 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/hostTitle"
+        android:id="@+id/LNameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="90dp"
@@ -41,10 +41,10 @@
         android:text="on"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/hostTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/LNameTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toEndOf="@+id/hostTitle" />
+        app:layout_constraintStart_toEndOf="@+id/LNameTxt" />
 
     <TextView
         android:id="@+id/hostString2"
@@ -55,19 +55,19 @@
         android:text="at"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/inviTitle4"
-        app:layout_constraintStart_toEndOf="@+id/inviTitle4" />
+        app:layout_constraintBottom_toBottomOf="@+id/LDateTxt"
+        app:layout_constraintStart_toEndOf="@+id/LDateTxt" />
 
     <TextView
-        android:id="@+id/inviTitle4"
+        android:id="@+id/LDateTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:text="Date"
         android:textColor="#dfb50e"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/hostTitle"
-        app:layout_constraintTop_toBottomOf="@+id/hostTitle" />
+        app:layout_constraintStart_toStartOf="@+id/LNameTxt"
+        app:layout_constraintTop_toBottomOf="@+id/LNameTxt" />
 
     <TextView
         android:id="@+id/inviTitle5"
@@ -77,8 +77,8 @@
         android:text="Place"
         android:textColor="#dfb50e"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/inviTitle4"
-        app:layout_constraintTop_toBottomOf="@+id/inviTitle4" />
+        app:layout_constraintStart_toStartOf="@+id/LDateTxt"
+        app:layout_constraintTop_toBottomOf="@+id/LDateTxt" />
 
     <ImageView
         android:id="@+id/imageView5"
