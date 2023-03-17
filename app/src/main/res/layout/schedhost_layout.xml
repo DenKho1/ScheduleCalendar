@@ -7,8 +7,8 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="414dp"
-        android:layout_height="216dp"
+        android:layout_width="413dp"
+        android:layout_height="127dp"
         android:background="#73759A"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +22,7 @@
         android:id="@+id/hostTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="90dp"
         android:fontFamily="sans-serif-black"
         android:text="Title"
         android:textColor="#dfb50e"
@@ -30,7 +30,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
         app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/relativeLayout"
-        app:layout_constraintVertical_bias="0.27999997" />
+        app:layout_constraintVertical_bias="0.120000005" />
 
     <TextView
         android:id="@+id/hasInvited3"
@@ -82,12 +82,13 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="140dp"
-        android:layout_height="167dp"
+        android:layout_width="86dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
         app:layout_constraintStart_toStartOf="@+id/relativeLayout"
         app:layout_constraintTop_toTopOf="@+id/relativeLayout"
-        app:layout_constraintVertical_bias="0.35000002"
+        app:layout_constraintVertical_bias="0.43"
         app:srcCompat="@drawable/crown" />
 
 </android.support.constraint.ConstraintLayout>
