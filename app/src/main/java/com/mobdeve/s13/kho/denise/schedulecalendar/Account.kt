@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 
@@ -26,6 +27,13 @@ class Account : AppCompatActivity() {
         register.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+        }
+
+        val sched=findViewById<ImageButton>(R.id.accsched)
+
+        sched.setOnClickListener {
+            val intent2 = Intent(this, EventSchedule::class.java)
+            startActivity(intent2)
         }
 
     }
