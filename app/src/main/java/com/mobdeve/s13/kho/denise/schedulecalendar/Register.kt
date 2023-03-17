@@ -39,7 +39,7 @@ class Register : AppCompatActivity() {
 
             else
             {
-                val intent = Intent(this, Account::class.java)
+                val intent = Intent(this, EventSchedule::class.java)
                 intent.putExtra("Username",name.text.toString())
                 intent.putExtra("Email",email.text.toString())
                 intent.putExtra("Mobile",mobile.text.toString())
