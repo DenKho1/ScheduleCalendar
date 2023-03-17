@@ -22,13 +22,13 @@
         android:id="@+id/hostTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="160dp"
         android:fontFamily="sans-serif-black"
         android:text="Title"
         android:textColor="#dfb50e"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/relativeLayout"
         app:layout_constraintVertical_bias="0.27999997" />
 
