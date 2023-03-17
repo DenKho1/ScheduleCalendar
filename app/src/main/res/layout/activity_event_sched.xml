@@ -27,6 +27,7 @@
         app:srcCompat="@drawable/baseline_person_24" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="406dp"
         android:layout_height="597dp"
         android:layout_marginTop="132dp"
