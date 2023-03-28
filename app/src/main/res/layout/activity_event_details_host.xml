@@ -7,218 +7,220 @@
     android:background="#2B2C44"
     tools:context=".EventDetailsHost">
 
-    <LinearLayout
-        android:id="@+id/LinearLayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/DetailsETxtHost"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Event Details"
-            android:textColor="#D9CF77"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/ENameTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Event Name"
-            android:textColor="#D9CF77"
-            android:textSize="17sp" />
-
-        <EditText
-            android:id="@+id/EName"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:background="#000000"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="MOBDEVE" />
-
-        <TextView
-            android:id="@+id/ELocationTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Event Location"
-            android:textColor="#D9CF77"
-            android:textSize="17sp" />
-
-        <EditText
-            android:id="@+id/ELocation"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:background="#000000"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="G301" />
-
-        <TextView
-            android:id="@+id/EDateTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Event Date"
-            android:textColor="#D9CF77"
-            android:textSize="17sp" />
-
-        <EditText
-            android:id="@+id/EDate"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:background="#000000"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="03/17/2023" />
-
-        <TextView
-            android:id="@+id/EDescTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Event Description"
-            android:textColor="#D9CF77"
-            android:textSize="17sp" />
-
-        <EditText
-            android:id="@+id/EDesc"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="#000000"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Project Deliverable 2" />
-
-    </LinearLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LinearLayout">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/EStartTimeTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/LinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Event Start Time"
-                android:textColor="#D9CF77"
-                android:textSize="17sp" />
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/EStartTIme"
-                android:layout_width="125dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:background="#000000"
-                android:backgroundTint="#FFFFFF"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="00:00" />
+                <TextView
+                    android:id="@+id/DetailsETxtHost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Event Details"
+                    android:textColor="#D9CF77"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/EEndTimeTxt"
-                android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/ENameTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Event Name"
+                    android:textColor="#D9CF77"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/EName"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#000000"
+                    android:backgroundTint="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="MOBDEVE" />
+
+                <TextView
+                    android:id="@+id/ELocationTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Event Location"
+                    android:textColor="#D9CF77"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/ELocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#000000"
+                    android:backgroundTint="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="G301" />
+
+                <TextView
+                    android:id="@+id/EDateTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Event Date"
+                    android:textColor="#D9CF77"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/EDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#000000"
+                    android:backgroundTint="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="03/17/2023" />
+
+                <TextView
+                    android:id="@+id/EDescTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Event Description"
+                    android:textColor="#D9CF77"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/EDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="#000000"
+                    android:backgroundTint="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Project Deliverable 2" />
+
+            </LinearLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Event End TIme"
-                android:textColor="#D9CF77"
-                android:textSize="17sp" />
+                android:layout_marginStart="8dp">
 
-            <EditText
-                android:id="@+id/EEndTIme"
-                android:layout_width="125dp"
-                android:layout_height="48dp"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/EStartTimeTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Event Start Time"
+                        android:textColor="#D9CF77"
+                        android:textSize="17sp" />
+
+                    <EditText
+                        android:id="@+id/EStartTIme"
+                        android:layout_width="125dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="8dp"
+                        android:background="#000000"
+                        android:backgroundTint="#FFFFFF"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text="00:00" />
+
+                    <TextView
+                        android:id="@+id/EEndTimeTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Event End TIme"
+                        android:textColor="#D9CF77"
+                        android:textSize="17sp" />
+
+                    <EditText
+                        android:id="@+id/EEndTIme"
+                        android:layout_width="125dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="8dp"
+                        android:background="#000000"
+                        android:backgroundTint="#FFFFFF"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text="23:59" />
+
+                </LinearLayout>
+            </android.support.constraint.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
-                android:background="#000000"
-                android:backgroundTint="#FFFFFF"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="23:59" />
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/EditEBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D9CF77"
+                    android:text="Edit Event"
+                    android:textColor="#1B1464" />
+
+                <Button
+                    android:id="@+id/SendInvitesBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D9CF77"
+                    android:text="Send Invites"
+                    android:textColor="#1B1464" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/EInvitesTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Invited"
+                    android:textColor="#FFFFFF"
+                    android:textSize="17sp" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/invRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
 
         </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
-        <Button
-            android:id="@+id/EditEBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#D9CF77"
-            android:text="Edit Event"
-            android:textColor="#1B1464" />
-
-        <Button
-            android:id="@+id/SendInvitesBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#D9CF77"
-            android:text="Send Invites"
-            android:textColor="#1B1464" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
-        app:layout_constraintTop_toBottomOf="@+id/LinearLayout">
-
-        <TextView
-            android:id="@+id/EInvitesTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Invited"
-            android:textColor="#FFFFFF"
-            android:textSize="17sp" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/invRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
