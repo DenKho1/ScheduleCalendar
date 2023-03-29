@@ -13,6 +13,8 @@ class NewActivity : AppCompatActivity() {
 
         reg.setOnClickListener() {
             val intent = Intent(this, EventSchedule::class.java)
+            val id1=intent.getStringExtra("id")
+            intent.putExtra("id",id1)
             startActivity(intent)
         }
     }

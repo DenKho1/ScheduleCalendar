@@ -22,10 +22,14 @@ class EventSchedule : AppCompatActivity() {
 
             acc.setOnClickListener() {
                 val intent = Intent(this, Account::class.java)
+                val id1=intent.getStringExtra("id")
+                intent.putExtra("id",id1)
                 startActivity(intent)
             }
             new.setOnClickListener() {
                 val intent = Intent(this, NewActivity::class.java)
+                val id1=intent.getStringExtra("id")
+                intent.putExtra("id",id1)
                 startActivity(intent)
             }
         }

@@ -69,9 +69,7 @@ class Register : AppCompatActivity() {
                                     Log.d(TAG,"DocumentSnapshot written with ID: "+ documentReference.id)
                                     //move to next activity
                                     val intent = Intent(this, Account::class.java)
-                                    intent.putExtra("Username",name.text.toString())
-                                    intent.putExtra("Email",email.text.toString())
-                                    intent.putExtra("Mobile",mobile.text.toString())
+                                    intent.putExtra("id",documentReference.id)
                                     startActivity(intent)
                                 }
                                 .addOnFailureListener{
