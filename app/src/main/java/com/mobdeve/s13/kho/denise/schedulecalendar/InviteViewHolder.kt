@@ -1,10 +1,10 @@
 package com.mobdeve.s13.kho.denise.schedulecalendar
 
-import android.support.v7.widget.RecyclerView.ViewHolder
 import android.view.View
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 
-class InviteViewHolder (itemView: View): ViewHolder(itemView){
+class InviteViewHolder (itemView: View): RecyclerView.ViewHolder(itemView){
     private val en: TextView = itemView.findViewById(R.id.inviUser)
     private val el: TextView = itemView.findViewById(R.id.inviTitle)
     private val ed: TextView = itemView.findViewById(R.id.inviTitle2)

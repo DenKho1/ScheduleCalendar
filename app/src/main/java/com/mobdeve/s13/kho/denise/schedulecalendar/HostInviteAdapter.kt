@@ -1,9 +1,9 @@
 package com.mobdeve.s13.kho.denise.schedulecalendar
 
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.RecyclerView.ViewHolder
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 
 class HostInviteAdapter(private val data: ArrayList<HostInvite>): RecyclerView.Adapter<HostInviteViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HostInviteViewHolder{

@@ -1,8 +1,9 @@
 package com.mobdeve.s13.kho.denise.schedulecalendar
 
-import android.support.v7.widget.RecyclerView
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 
 class MyAdapter(private val data: ArrayList<Event>): RecyclerView.Adapter<MyViewHolder>() {
 

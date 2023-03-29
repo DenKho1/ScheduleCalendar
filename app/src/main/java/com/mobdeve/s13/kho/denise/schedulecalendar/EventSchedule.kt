@@ -2,10 +2,10 @@ package com.mobdeve.s13.kho.denise.schedulecalendar
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.widget.ImageButton
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class EventSchedule : AppCompatActivity() {
     private val eventList: ArrayList<Event> = DataGenerator.generateData()

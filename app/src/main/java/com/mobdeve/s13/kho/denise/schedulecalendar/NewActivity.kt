@@ -1,9 +1,9 @@
 package com.mobdeve.s13.kho.denise.schedulecalendar
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 
 class NewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
