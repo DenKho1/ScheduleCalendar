@@ -50,7 +50,7 @@ class Register : AppCompatActivity() {
 
                 val query=usersRef.whereEqualTo(
                     MyFirestoreReferences.USERNAME_FIELD,
-                    name.toString()
+                    name.text.toString()
                 )
 
                 query.get().addOnCompleteListener{

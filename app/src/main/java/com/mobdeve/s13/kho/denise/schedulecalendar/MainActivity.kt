@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -24,19 +25,43 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+
         login.setOnClickListener() {
             val db= Firebase.firestore
             val usersRef=db.collection(MyFirestoreReferences.USERS_COLLECTION)
 
-            val query=usersRef.whereEqualTo(
+            usersRef.whereEqualTo(
                MyFirestoreReferences.USERNAME_FIELD,
-                name.toString()
+                name.text.toString()
             )
 
+            usersRef.whereEqualTo(
+                MyFirestoreReferences.PASSWORD_FIELD,
+                password.text.toString()
+            )
+
+            usersRef.get().addOnCompleteListener {
+                task->
+                if(task.isSuccessful) {
+                    if(task.result.isEmpty)
+                    {
+                        val intent = Intent(this, Account::class.java)
+                        intent.putExtra("id",usersRef.document().id)
+                        startActivity(intent)
+                    }
+
+                    else
+                    {
+                        val toast=
+                            Toast.makeText(applicationContext,"User does not exist", Toast.LENGTH_LONG)
+                        toast.show()
+
+                    }
+                }
+            }
 
 
-            val intent = Intent(this, EventSchedule::class.java)
-            startActivity(intent)
+
         }
     }
 }
