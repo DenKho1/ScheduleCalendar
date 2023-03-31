@@ -62,7 +62,7 @@ class Account : AppCompatActivity() {
         val sched=findViewById<ImageButton>(R.id.accsched)
 
         sched.setOnClickListener {
-            val intent = Intent(this, EventSchedule::class.java)
+            val intent = Intent(this, FirestoreEventSchedule::class.java)
             val id1=intent.getStringExtra("id")
             intent.putExtra("id",id1)
             startActivity(intent)
