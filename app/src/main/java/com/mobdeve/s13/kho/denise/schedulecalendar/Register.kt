@@ -71,6 +71,7 @@ class Register : AppCompatActivity() {
                                     val intent = Intent(this, Account::class.java)
                                     intent.putExtra("id",documentReference.id)
                                     startActivity(intent)
+                                    finish()
                                 }
                                 .addOnFailureListener{
                                     e ->Log.w(TAG,"Error adding document", e)}

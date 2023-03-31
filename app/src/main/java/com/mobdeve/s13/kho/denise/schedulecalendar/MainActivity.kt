@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         register.setOnClickListener {
             val intent = Intent(this, Register::class.java)
             startActivity(intent)
-
         }
 
         login.setOnClickListener{
@@ -55,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                         val intent = Intent(this, Account::class.java)
                         intent.putExtra("id",usersRef.document().id)
                         startActivity(intent)
+                        finish()
                     }
                 }
 
