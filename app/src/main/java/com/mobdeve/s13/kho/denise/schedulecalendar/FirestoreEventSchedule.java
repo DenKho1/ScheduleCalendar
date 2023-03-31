@@ -1,6 +1,10 @@
 package com.mobdeve.s13.kho.denise.schedulecalendar;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,10 +28,19 @@ public class FirestoreEventSchedule extends AppCompatActivity {
         setContentView(R.layout.activity_event_sched);
 
         setUpRecyclerView();
+
+        ImageButton button = (ImageButton) findViewById(R.id.AddEvnt);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            Intent send = new Intent(FirestoreEventSchedule.this, FirestoreNewEvent.class);
+            startActivity(send);
+            }
+        });
     }
 
     private void setUpRecyclerView() {
-        Query query = eventRef.orderBy("priority", Query.Direction.DESCENDING);
+        Query query = eventRef.orderBy("lprio", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<FirestoreEvent> options = new FirestoreRecyclerOptions.Builder<FirestoreEvent>()
                 .setQuery(query, FirestoreEvent.class)
@@ -37,7 +50,7 @@ public class FirestoreEventSchedule extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.schedRecycler);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new WrapContentLinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(adapter);
     }
 

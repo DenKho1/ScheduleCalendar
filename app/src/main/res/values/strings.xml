@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ScheduleCalendar</string>
+    <string name="save">save</string>
 </resources>

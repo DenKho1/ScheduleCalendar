@@ -5,17 +5,17 @@ public class FirestoreEvent {
     private String LNameTxt;
     private String LDateTxt;
     private String LLocationTxt;
-    private int priority;
+    private int LPrio;
 
     public FirestoreEvent() {
         //empty
     }
 
-    public FirestoreEvent(String LNameTxt, String LDateTxt, String LLocationTxt) {
+    public FirestoreEvent(String LNameTxt, String LDateTxt, String LLocationTxt, int LPrio) {
         this.LNameTxt = LNameTxt;
         this.LDateTxt = LDateTxt;
         this.LLocationTxt = LLocationTxt;
-        this.priority = priority;
+        this.LPrio = LPrio;
     }
 
     public String getLNameTxt() {
@@ -42,12 +42,12 @@ public class FirestoreEvent {
         this.LLocationTxt = LLocationTxt;
     }
 
-    public int getPriority() {
-        return priority;
+    public int getLPrio() {
+        return LPrio;
     }
 
-    public void setPriority(int priority) {
-        this.priority = priority;
+    public void setLPrio(int LPrio) {
+        this.LPrio = LPrio;
     }
 }
 
