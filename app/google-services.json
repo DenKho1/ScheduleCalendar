@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "28964580448",
+    "project_id": "schedulecalendar-7dd75",
+    "storage_bucket": "schedulecalendar-7dd75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28964580448:android:adf27b11888c8992456705",
+        "android_client_info": {
+          "package_name": "com.mobdeve.s13.kho.denise.schedulecalendar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "28964580448-1k8d9mmh15igi5sjtmpcc2pbd716tlcn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdQoczWhTSkS23cd22a122HOfbI49icyE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "28964580448-1k8d9mmh15igi5sjtmpcc2pbd716tlcn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
