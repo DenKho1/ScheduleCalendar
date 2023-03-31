@@ -18,6 +18,9 @@
             android:name=".EditEvent"
             android:exported="false" />
         <activity
+            android:name=".FirestoreEventSchedule"
+            android:exported="false" />
+        <activity
             android:name=".EventDetailsHost"
             android:exported="false" />
         <activity

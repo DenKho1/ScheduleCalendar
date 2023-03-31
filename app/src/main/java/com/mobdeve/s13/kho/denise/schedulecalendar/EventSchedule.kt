@@ -16,7 +16,7 @@ class EventSchedule : AppCompatActivity() {
             val acc=findViewById<ImageButton>(R.id.AccBtn)
             val new=findViewById<ImageButton>(R.id.AddEvnt)
 
-            this.recyclerView = findViewById(R.id.recyclerView)
+            this.recyclerView = findViewById(R.id.schedRecycler)
             this.recyclerView.adapter = MyAdapter(this.eventList)
             this.recyclerView.layoutManager = LinearLayoutManager(this)
 
