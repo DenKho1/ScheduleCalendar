@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        login.setOnClickListener() {
+        login.setOnClickListener{
             val db= Firebase.firestore
             val usersRef=db.collection(MyFirestoreReferences.USERS_COLLECTION)
 
@@ -45,19 +45,19 @@ class MainActivity : AppCompatActivity() {
                 if(task.isSuccessful) {
                     if(task.result.isEmpty)
                     {
-                        val intent = Intent(this, Account::class.java)
-                        intent.putExtra("id",usersRef.document().id)
-                        startActivity(intent)
+                        val toast=
+                            Toast.makeText(applicationContext,"User does not exist", Toast.LENGTH_LONG)
+                        toast.show()
                     }
 
                     else
                     {
-                        val toast=
-                            Toast.makeText(applicationContext,"User does not exist", Toast.LENGTH_LONG)
-                        toast.show()
-
+                        val intent = Intent(this, Account::class.java)
+                        intent.putExtra("id",usersRef.document().id)
+                        startActivity(intent)
                     }
                 }
+
             }
 
 
