@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
@@ -35,30 +36,35 @@ class MainActivity : AppCompatActivity() {
                 name.text.toString()
             )
 
-            usersRef.whereEqualTo(
-                MyFirestoreReferences.PASSWORD_FIELD,
-                password.text.toString()
-            )
+            var tempname=""
+            var tpassword=""
+            val usersRef2 = db.collection(MyFirestoreReferences.USERS_COLLECTION).document(usersRef.document().id)
+            usersRef2.get()
+                .addOnSuccessListener { documentSnapshot ->
+                    val user = documentSnapshot.toObject<Users>()
+                        if (user != null) {
+                            tempname = user.username
+                            tpassword=user.password
+                        }
 
-            usersRef.get().addOnCompleteListener {
-                task->
-                if(task.isSuccessful) {
-                    if(task.result.isEmpty)
-                    {
-                        val toast=
-                            Toast.makeText(applicationContext,"User does not exist", Toast.LENGTH_LONG)
-                        toast.show()
-                    }
 
-                    else
-                    {
-                        val intent = Intent(this, Account::class.java)
-                        intent.putExtra("id",usersRef.document().id)
-                        startActivity(intent)
-                    }
                 }
 
+            if(tempname.equals(name.text.toString()) && tpassword.equals(password.text.toString()) )
+            {
+                val intent = Intent(this, Account::class.java)
+                intent.putExtra("id",usersRef.document().id)
+                startActivity(intent)
+
             }
+
+            else
+            {
+                val toast=
+                    Toast.makeText(applicationContext,"User does not exist", Toast.LENGTH_LONG)
+                toast.show()
+            }
+
 
 
 
