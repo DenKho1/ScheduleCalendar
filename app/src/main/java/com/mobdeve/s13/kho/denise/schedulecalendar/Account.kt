@@ -57,6 +57,7 @@ class Account : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
 
             startActivity(intent)
+            finish()
         }
 
         val sched=findViewById<ImageButton>(R.id.accsched)

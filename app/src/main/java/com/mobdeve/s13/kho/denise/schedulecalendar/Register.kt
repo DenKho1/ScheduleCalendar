@@ -12,7 +12,7 @@ import com.google.firebase.ktx.Firebase
 
 class Register : AppCompatActivity() {
     companion object {
-        private const val TAG = "LoginActivity"
+        private const val TAG = "RegisterActivity"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
