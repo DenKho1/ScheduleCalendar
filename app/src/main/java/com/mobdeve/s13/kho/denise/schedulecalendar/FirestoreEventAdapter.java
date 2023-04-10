@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+
+import org.w3c.dom.Text;
 
 public class FirestoreEventAdapter extends FirestoreRecyclerAdapter<FirestoreEvent, FirestoreEventAdapter.FirestoreEventHolder> {
 
@@ -23,6 +26,7 @@ public class FirestoreEventAdapter extends FirestoreRecyclerAdapter<FirestoreEve
         holder.LNameTxt.setText(model.getLNameTxt());
         holder.LDateTxt.setText(model.getLDateTxt());
         holder.LLocationTxt.setText(model.getLLocationTxt());
+        holder.Lprio.setText(String.valueOf(model.getLPrio()));
     }
 
     @NonNull
@@ -38,6 +42,7 @@ public class FirestoreEventAdapter extends FirestoreRecyclerAdapter<FirestoreEve
             TextView LDateTxt;
             TextView LLocationTxt;
 
+            TextView Lprio;
 
 
         public FirestoreEventHolder(@NonNull View itemView) {
@@ -45,6 +50,7 @@ public class FirestoreEventAdapter extends FirestoreRecyclerAdapter<FirestoreEve
             LNameTxt = itemView.findViewById(R.id.LNameTxt);
             LDateTxt = itemView.findViewById(R.id.LDateTxt);
             LLocationTxt = itemView.findViewById(R.id.LLocationTxt);
+            Lprio = itemView.findViewById(R.id.LPrio);
         }
     }
 }

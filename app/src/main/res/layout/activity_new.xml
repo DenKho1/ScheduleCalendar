@@ -175,19 +175,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="# of Repeats"
+                        android:text="Priority"
                         android:textColor="#D9CF77"
                         android:textSize="17sp" />
 
-                    <EditText
-                        android:id="@+id/RepeatNumber"
-                        android:layout_width="125dp"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="8dp"
-                        android:background="#000000"
-                        android:backgroundTint="#FFFFFF"
-                        android:ems="10"
-                        android:inputType="number" />
+                    <NumberPicker
+                        android:id="@+id/number_picker_priority"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF" />
+
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
