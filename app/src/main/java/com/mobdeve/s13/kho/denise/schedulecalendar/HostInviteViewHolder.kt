@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class HostInviteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val en: TextView = itemView.findViewById(R.id.userNameTxt)
+    private val en: TextView = itemView.findViewById(R.id.GNameTxt)
 
     fun bindHostInviteData(hostInvite: HostInvite) {
         en.text = hostInvite.user

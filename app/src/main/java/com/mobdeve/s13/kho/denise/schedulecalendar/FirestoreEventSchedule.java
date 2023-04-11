@@ -33,8 +33,19 @@ public class FirestoreEventSchedule extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent send = new Intent(FirestoreEventSchedule.this, FirestoreNewEvent.class);
-            startActivity(send);
+                Intent send = new Intent(FirestoreEventSchedule.this, FirestoreNewEvent.class);
+                startActivity(send);
+            }
+        });
+
+        ImageButton buttonInvite = (ImageButton) findViewById(R.id.AccBtn);
+
+        buttonInvite.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent sendInvite = new Intent(FirestoreEventSchedule.this, FirestoreNewInvite.class);
+                startActivity(sendInvite);
             }
         });
     }
