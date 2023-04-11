@@ -24,6 +24,12 @@ public class FirestoreNewInvite extends AppCompatActivity {
 
     private EditText Guest;
 
+    public boolean error = true;
+
+    public boolean getError() {return this.error;}
+
+    public void setError(boolean value) {this.error = value;}
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,27 +66,49 @@ public class FirestoreNewInvite extends AppCompatActivity {
         String eventLocation = "Manila";
         String status = "Pending";
 
+        CollectionReference userRef = FirebaseFirestore.getInstance().collection("Users");
+        userRef.whereEqualTo("username", guest)
+               .get()
+               .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                   @Override
+                   public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                       if(task.isSuccessful()) {
+                           for(DocumentSnapshot document : task.getResult()) {
+                               if (document.exists()) {
+                                   setError(false);
+                               } else {
+                                   setError(true);
+                               }
+                           }
+                       }
+                   }
+               });
+
         if(!host.equals(guest)){
-            CollectionReference inviteRef = FirebaseFirestore.getInstance().collection("Invite");
-            inviteRef.whereEqualTo("guest", guest)
-                    .whereEqualTo("eventID", eventID)
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if(task.isSuccessful()) {
-                                for(DocumentSnapshot document : task.getResult()) {
-                                    if(document.exists()) {
-                                        Toast.makeText(FirestoreNewInvite.this, "User already invited", Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        inviteRef.add(new FirestoreInvite(guest, host, eventID, eventName, eventDate, eventLocation, status));
-                                        Toast.makeText(FirestoreNewInvite.this, "User successfully invited", Toast.LENGTH_SHORT).show();
-                                        finish();
+            if(!getError()) {
+                CollectionReference inviteRef = FirebaseFirestore.getInstance().collection("Invite");
+                inviteRef.whereEqualTo("guest", guest)
+                        .whereEqualTo("eventID", eventID)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if(task.isSuccessful()) {
+                                    for(DocumentSnapshot document : task.getResult()) {
+                                        if(document.exists()) {
+                                            Toast.makeText(FirestoreNewInvite.this, "User already invited", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            inviteRef.add(new FirestoreInvite(guest, host, eventID, eventName, eventDate, eventLocation, status));
+                                            Toast.makeText(FirestoreNewInvite.this, "User successfully invited", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        }
                                     }
                                 }
                             }
-                        }
-                    });
+                        });
+            } else {
+                Toast.makeText(FirestoreNewInvite.this, "User does not exist", Toast.LENGTH_SHORT).show();
+            }
         } else {
             Toast.makeText(FirestoreNewInvite.this, "Host cannot be guest", Toast.LENGTH_SHORT).show();
         }
