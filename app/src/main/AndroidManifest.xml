@@ -25,6 +25,8 @@
         <activity
             android:name=".FirestoreEventSchedule"
             android:exported="false" />
+        <activity android:name=".FirestoreAInv"
+            android:exported="false"/>
         <activity
             android:name=".EventDetailsHost"
             android:exported="false" />
