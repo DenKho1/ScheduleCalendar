@@ -1,7 +1,9 @@
 package com.mobdeve.s13.kho.denise.schedulecalendar
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -14,6 +16,12 @@ import com.google.firebase.firestore.ktx.toObject
 
 
 class Account : AppCompatActivity() {
+
+    companion object {
+        private const val TAG = "AccountActivity"
+        private const val NAME_KEY="NAME_KEY"
+    }
+
     private val inviteList: ArrayList<Invite> = InviteGenerator.genData()
     private lateinit var recyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,22 +36,31 @@ class Account : AppCompatActivity() {
         val id=intent.getStringExtra("id")
 
         val db = FirebaseFirestore.getInstance()
-        val usersRef = db.collection(MyFirestoreReferences.USERS_COLLECTION).document(id.toString())
 
-        usersRef.get()
-            .addOnSuccessListener { documentSnapshot ->
-                val user = documentSnapshot.toObject<Users>()
-                if (user != null) {
-                    name.text= user.username
-                    email.text=user.email
-                    mobile.text=user.mobile
+        val sp=getSharedPreferences("USERNAME",Context.MODE_PRIVATE)
+        val named=sp.getString("NAME_KEY","Anon")
+        if(named!=null) {
+            Log.d(TAG,"name="+named)
+
+            val usersRef = db.collection(MyFirestoreReferences.USERS_COLLECTION).whereEqualTo(
+                MyFirestoreReferences.USERNAME_FIELD,
+                named
+            )
+
+            usersRef.get().addOnSuccessListener { documents->
+                if(!documents.isEmpty)
+                {
+                    val document=documents.first()
+                    name.text=document.data[MyFirestoreReferences.USERNAME_FIELD].toString()
+                    email.text=document.data[MyFirestoreReferences.EMAIL_FIELD].toString()
+                    mobile.text=document.data[MyFirestoreReferences.MOBILE_FIELD].toString()
                 }
 
-            }
+            }.addOnFailureListener{exception->
+                Log.d(TAG,"Error getting documents: ",exception)
 
-       // name.text = intent.getStringExtra("Username")
-        //email.text= intent.getStringExtra("Email")
-       // mobile.text= intent.getStringExtra("Mobile")
+            }
+        }
         icon.setImageResource(R.drawable.icon)
 
         this.recyclerView = findViewById(R.id.accRecycler)
@@ -51,11 +68,14 @@ class Account : AppCompatActivity() {
         this.recyclerView.layoutManager = LinearLayoutManager(this)
 
 
-        val register=findViewById<Button>(R.id.AccLogout)
+        val logout=findViewById<Button>(R.id.AccLogout)
 
-        register.setOnClickListener {
+
+        logout.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-
+            val sp=this.getSharedPreferences("USERNAME", Context.MODE_PRIVATE)
+            val edit=sp.edit()
+            edit.clear()
             startActivity(intent)
             finish()
         }

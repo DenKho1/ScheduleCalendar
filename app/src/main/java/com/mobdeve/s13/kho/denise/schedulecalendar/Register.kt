@@ -1,5 +1,6 @@
 package com.mobdeve.s13.kho.denise.schedulecalendar
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,7 @@ import com.google.firebase.ktx.Firebase
 class Register : AppCompatActivity() {
     companion object {
         private const val TAG = "RegisterActivity"
+        private const val NAME_KEY="NAME_KEY"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,8 +70,13 @@ class Register : AppCompatActivity() {
                                 .addOnSuccessListener { documentReference ->
                                     Log.d(TAG,"DocumentSnapshot written with ID: "+ documentReference.id)
                                     //move to next activity
+                                    val sp=this.getSharedPreferences("USERNAME", Context.MODE_PRIVATE)
+                                    val edit=sp.edit()
+                                    edit.putString(NAME_KEY,name.text.toString())
+                                    edit.apply()
+                                    edit.commit()
                                     val intent = Intent(this, Account::class.java)
-                                    intent.putExtra("id",documentReference.id)
+
                                     startActivity(intent)
                                     finish()
                                 }

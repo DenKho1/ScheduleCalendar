@@ -1,7 +1,9 @@
 package com.mobdeve.s13.kho.denise.schedulecalendar
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -16,6 +18,7 @@ import com.google.firebase.ktx.Firebase
 class MainActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "LOGINActivity"
+        private const val NAME_KEY="NAME_KEY"
     }
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +68,10 @@ class MainActivity : AppCompatActivity() {
                                     Log.d(TAG, "ID=" + id)
                                     val intent = Intent(this, Account::class.java)
                                     intent.putExtra("id", id)
+                                    val sp=this.getSharedPreferences("USERNAME", Context.MODE_PRIVATE)
+                                    val edit=sp.edit()
+                                    edit.putString(NAME_KEY,name.text.toString())
+                                    edit.apply()
                                     startActivity(intent)
                                     finish()
                                 }
