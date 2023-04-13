@@ -1,10 +1,15 @@
 package com.mobdeve.s13.kho.denise.schedulecalendar;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,8 +56,8 @@ public class FirestoreAInv extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("USERNAME",Context.MODE_PRIVATE);
         String named=sp.getString("NAME_KEY","Anon");
 
-  if(named!=null) {
-          Query userRef = db.collection("Users").whereEqualTo("username", named).limit(1);
+        if(named!=null) {
+            Query userRef = db.collection("Users").whereEqualTo("username", named).limit(1);
             userRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -70,7 +75,30 @@ public class FirestoreAInv extends AppCompatActivity {
                     }
                 }
             });
-      }
+        }
+
+        Button logout = findViewById(R.id.AccLogout);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                SharedPreferences sp = getSharedPreferences("USERNAME", Context.MODE_PRIVATE);
+                sp.edit().clear().commit();
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        ImageButton sched = findViewById(R.id.accsched);
+
+        sched.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), FirestoreEventSchedule.class);
+                startActivity(intent);
+            }
+        });
 
         setUpRecyclerView();
 
@@ -91,7 +119,23 @@ public class FirestoreAInv extends AppCompatActivity {
                 .setQuery(query, FirestoreInvite.class)
                 .build();
 
-        adapter = new FirestoreAInvAdapter(options);
+        adapter = new FirestoreAInvAdapter(options, new OnRejectInviteClick() {
+            @Override
+            public void onRejectClick(int position) {
+                String eventID = adapter.getSnapshots().getSnapshot(position).getId();
+                CollectionReference inviteRef = FirebaseFirestore.getInstance().collection("Invite");
+                inviteRef.document(eventID).update("status", "Rejected");
+                Toast.makeText(FirestoreAInv.this, "Invite Rejected", Toast.LENGTH_SHORT).show();
+            }
+        }, new OnAcceptInviteClick() {
+            @Override
+            public void onAcceptClick(int position) {
+                String eventID = adapter.getSnapshots().getSnapshot(position).getId();
+                CollectionReference inviteRef = FirebaseFirestore.getInstance().collection("Invite");
+                inviteRef.document(eventID).update("status", "Accepted");
+                Toast.makeText(FirestoreAInv.this, "Invite Accepted", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         RecyclerView recyclerView = findViewById(R.id.accRecycler);
         recyclerView.setHasFixedSize(true);

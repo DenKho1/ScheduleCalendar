@@ -27,24 +27,36 @@ public class FirestoreNewInvite extends AppCompatActivity {
 
     private EditText Guest;
 
-    public boolean error = true;
-
-    public String eventID = null;
-
-    public boolean getError() {return this.error;}
-
-    public void setError(boolean value) {this.error = value;}
-
-    public String getEventID() {return this.eventID;}
-
-    public void setEventID(String value) {this.eventID = value;}
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_details_host_send_inv);
 
         Guest = findViewById(R.id.ESendInv);
+
+
+        String eventName = "Basketball";
+        String eventDate = "25/08/2023";
+        String eventLocation = "Manila";
+
+        CollectionReference eventRef = FirebaseFirestore.getInstance().collection("Event");
+        eventRef.whereEqualTo("lnameTxt", eventName)
+                .whereEqualTo("ldateTxt", eventDate)
+                .whereEqualTo("llocationTxt", eventLocation)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            QuerySnapshot querySnapshot = task.getResult();
+                            if(!querySnapshot.isEmpty()) {
+                                DocumentSnapshot documentSnapshot = querySnapshot.getDocuments().get(0);
+                                SharedPreferences spEvent = getSharedPreferences("EVENT_ID", Context.MODE_PRIVATE);
+                                spEvent.edit().putString("EVENT_ID_KEY", documentSnapshot.getId()).apply();
+                            }
+                        }
+                    }
+                });
     }
 
     @Override
@@ -68,16 +80,24 @@ public class FirestoreNewInvite extends AppCompatActivity {
 
     private void saveInvite() {
 
+
+
         SharedPreferences spHost = this.getSharedPreferences("USERNAME", Context.MODE_PRIVATE);
         String host = spHost.getString("NAME_KEY", "");
 
+        SharedPreferences spEvent = getSharedPreferences("EVENT_ID", Context.MODE_PRIVATE);
+        String eventID = spEvent.getString("EVENT_ID_KEY", "null");
+
 
         String guest = Guest.getText().toString();
-        String eventID = "VYzRkJEWWhaYAbUkGEXC";
         String eventName = "Basketball";
         String eventDate = "25/08/2023";
         String eventLocation = "Manila";
         String status = "Pending";
+
+
+
+
 
         CollectionReference userRef = FirebaseFirestore.getInstance().collection("Users");
         userRef.whereEqualTo("username", guest)
@@ -89,17 +109,22 @@ public class FirestoreNewInvite extends AppCompatActivity {
                            QuerySnapshot querySnapshot = task.getResult();
                            if(querySnapshot.isEmpty()){
                                Log.d("FSNewInvite", "User not Found");
-                               setError(true);
+                               SharedPreferences spUser = getSharedPreferences("USER_NAME", Context.MODE_PRIVATE);
+                               spUser.edit().putBoolean("USER_NAME_KEY", false).apply();
                            } else {
                                Log.d("FSNewInvite", "User Found");
-                               setError(false);
+                               SharedPreferences spUser = getSharedPreferences("EVENT_ID", Context.MODE_PRIVATE);
+                               spUser.edit().putBoolean("USER_NAME_KEY", true).apply();
                            }
                        }
                    }
                });
 
+        SharedPreferences spUser = getSharedPreferences("USER_NAME", Context.MODE_PRIVATE);
+        boolean found = spUser.getBoolean("USER_NAME_KEY", true);
+
         if(!host.equals(guest)){
-            if(!getError()) {
+            if(found) {
                 CollectionReference inviteRef = FirebaseFirestore.getInstance().collection("Invite");
                 inviteRef.whereEqualTo("guest", guest)
                          .whereEqualTo("eventID", eventID)
@@ -113,18 +138,26 @@ public class FirestoreNewInvite extends AppCompatActivity {
                                      if(querySnapshot.isEmpty()){
                                          inviteRef.add(new FirestoreInvite(guest, host, eventID, eventName, eventDate, eventLocation, status));
                                          Toast.makeText(FirestoreNewInvite.this, "User successfully invited", Toast.LENGTH_SHORT).show();
+                                         SharedPreferences spUser = getSharedPreferences("USER_NAME", Context.MODE_PRIVATE);
+                                         spUser.edit().remove("USER_NAME_KEY").commit();
+                                         SharedPreferences spEvent = getSharedPreferences("EVENT_ID", Context.MODE_PRIVATE);
+                                         spEvent.edit().remove("EVENT_ID_KEY").commit();
                                          finish();
                                      } else {
                                          Toast.makeText(FirestoreNewInvite.this, "User already invited", Toast.LENGTH_SHORT).show();
+                                         SharedPreferences spUser = getSharedPreferences("USER_NAME", Context.MODE_PRIVATE);
+                                         spUser.edit().remove("USER_NAME_KEY").commit();
                                      }
                                  }
                              }
                          });
             } else {
                 Toast.makeText(FirestoreNewInvite.this, "User does not exist", Toast.LENGTH_SHORT).show();
+                spUser.edit().remove("USER_NAME_KEY").commit();
             }
         } else {
             Toast.makeText(FirestoreNewInvite.this, "Host cannot be guest", Toast.LENGTH_SHORT).show();
+            spUser.edit().remove("USER_NAME_KEY").commit();
         }
 
     }

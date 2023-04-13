@@ -13,8 +13,16 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 public class FirestoreAInvAdapter extends FirestoreRecyclerAdapter<FirestoreInvite, FirestoreAInvAdapter.FirestoreAInviteHolder> {
 
-    public FirestoreAInvAdapter(@NonNull FirestoreRecyclerOptions<FirestoreInvite> options) {
+    private OnRejectInviteClick onRejectInviteClick;
+
+    private OnAcceptInviteClick onAcceptInviteClick;
+
+    public FirestoreAInvAdapter(@NonNull FirestoreRecyclerOptions<FirestoreInvite> options,
+                                OnRejectInviteClick onRejectInviteClick,
+                                OnAcceptInviteClick onAcceptInviteClick) {
         super(options);
+        this.onRejectInviteClick = onRejectInviteClick;
+        this.onAcceptInviteClick = onAcceptInviteClick;
     }
 
     @Override
@@ -37,11 +45,7 @@ public class FirestoreAInvAdapter extends FirestoreRecyclerAdapter<FirestoreInvi
     }
 
     class FirestoreAInviteHolder extends RecyclerView.ViewHolder {
-        TextView host;
-        TextView eventName;
-        TextView eventDate;
-        TextView guest, eventID, eventLocation, status;
-
+        TextView host, eventName, eventDate, guest, eventID, eventLocation, status;
 
         public FirestoreAInviteHolder(@NonNull View itemView) {
             super(itemView);
@@ -52,6 +56,20 @@ public class FirestoreAInvAdapter extends FirestoreRecyclerAdapter<FirestoreInvi
             eventID = itemView.findViewById(R.id.eventIDTxt);
             eventLocation = itemView.findViewById(R.id.eventLocationTxt);
             status = itemView.findViewById(R.id.statusTxt);
+
+            itemView.findViewById(R.id.AccReject).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onRejectInviteClick.onRejectClick(getAbsoluteAdapterPosition());
+                }
+            });
+
+            itemView.findViewById(R.id.AccAccept).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onAcceptInviteClick.onAcceptClick(getAbsoluteAdapterPosition());
+                }
+            });
         }
     }
 }
