@@ -3,6 +3,7 @@ package com.mobdeve.s13.kho.denise.schedulecalendar;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,7 +29,11 @@ public class FirestoreAInv extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
+        TextView uName = findViewById(R.id.AccUsername);
+
         setUpRecyclerView();
+
+        String name = uName.getText().toString();
     }
 
     private void setUpRecyclerView() {
@@ -37,9 +42,11 @@ public class FirestoreAInv extends AppCompatActivity {
         String user = spGuest.getString("NAME_KEY", "");
 
 
-        Query query = invRef.whereEqualTo("guest", user);
+        Query query = invRef.whereEqualTo("guest", user)
+                            .whereEqualTo("status", "Pending");
 
-        FirestoreRecyclerOptions<FirestoreInvite> options = new FirestoreRecyclerOptions.Builder<FirestoreInvite>()
+        FirestoreRecyclerOptions<FirestoreInvite> options = new
+        FirestoreRecyclerOptions.Builder<FirestoreInvite>()
                 .setQuery(query, FirestoreInvite.class)
                 .build();
 
@@ -47,7 +54,7 @@ public class FirestoreAInv extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.accRecycler);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new WrapContentLinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new WrapContentLinearLayoutManager(this, LinearLayoutManager.VERTICAL , false));
         recyclerView.setAdapter(adapter);
     }
 

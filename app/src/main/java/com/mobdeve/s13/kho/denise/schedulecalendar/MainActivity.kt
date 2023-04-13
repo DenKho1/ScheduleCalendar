@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                                 if (document != null) {
 
                                     Log.d(TAG, "ID=" + id)
-                                    val intent = Intent(this, Account::class.java)
+                                    val intent = Intent(this, FirestoreAInv::class.java)
                                     intent.putExtra("id", id)
                                     val sp=this.getSharedPreferences("USERNAME", Context.MODE_PRIVATE)
                                     val edit=sp.edit()

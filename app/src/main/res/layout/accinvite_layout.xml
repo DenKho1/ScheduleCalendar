@@ -15,37 +15,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/guestTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#00000000" />
+
+        <TextView
+            android:id="@+id/statusTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#00000000" />
+
+        <TextView
+            android:id="@+id/eventIDTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#00000000" />
+
+        <TextView
+            android:id="@+id/eventLocationTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#00000000" />
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="104dp"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
-        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/relativeLayout"
-        app:layout_constraintVertical_bias="0.13999999"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <TextView
-        android:id="@+id/inviUser"
+        android:id="@+id/host"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:fontFamily="sans-serif-black"
         android:text="Username"
         android:textColor="#dfb50e"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/relativeLayout"
         app:layout_constraintVertical_bias="0.100000024" />
 
     <TextView
-        android:id="@+id/inviTitle"
+        android:id="@+id/eventName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
@@ -56,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/hasInvited" />
 
     <TextView
-        android:id="@+id/inviTitle2"
+        android:id="@+id/eventDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
@@ -81,8 +95,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inviUser"
-        app:layout_constraintTop_toBottomOf="@+id/inviUser"
+        app:layout_constraintStart_toStartOf="@+id/host"
+        app:layout_constraintTop_toBottomOf="@+id/host"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -94,23 +108,22 @@
         android:text="on"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/inviTitle"
-        app:layout_constraintTop_toBottomOf="@+id/inviTitle" />
+        app:layout_constraintStart_toStartOf="@+id/eventName"
+        app:layout_constraintTop_toBottomOf="@+id/eventName" />
 
     <Button
         android:id="@+id/AccAccept"
         android:layout_width="166dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
+        android:layout_marginBottom="8dp"
         android:background="#8FBB9B"
         android:fontFamily="sans-serif-black"
         android:text="Accept"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.78" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/AccReject"

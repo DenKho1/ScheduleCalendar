@@ -103,6 +103,7 @@ public class FirestoreNewInvite extends AppCompatActivity {
                 CollectionReference inviteRef = FirebaseFirestore.getInstance().collection("Invite");
                 inviteRef.whereEqualTo("guest", guest)
                          .whereEqualTo("eventID", eventID)
+                         .whereEqualTo("host", host)
                          .get()
                          .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                              @Override

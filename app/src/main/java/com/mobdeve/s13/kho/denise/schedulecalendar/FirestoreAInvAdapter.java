@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-import javax.annotation.Nullable;
-
 public class FirestoreAInvAdapter extends FirestoreRecyclerAdapter<FirestoreInvite, FirestoreAInvAdapter.FirestoreAInviteHolder> {
 
     public FirestoreAInvAdapter(@NonNull FirestoreRecyclerOptions<FirestoreInvite> options) {
@@ -21,9 +19,13 @@ public class FirestoreAInvAdapter extends FirestoreRecyclerAdapter<FirestoreInvi
 
     @Override
     protected void onBindViewHolder(@NonNull FirestoreAInviteHolder holder, int position, @NonNull FirestoreInvite model) {
-        holder.inviUser.setText(model.getHost());
-        holder.inviTitle.setText(model.getEventName());
-        holder.inviTitle2.setText(model.getEventDate());
+        holder.host.setText(model.getHost());
+        holder.eventName.setText(model.getEventName());
+        holder.eventDate.setText(model.getEventDate());
+        holder.guest.setText(model.getGuest());
+        holder.eventID.setText(model.getEventID());
+        holder.eventLocation.setText(model.getEventLocation());
+        holder.status.setText(model.getStatus());
     }
 
     @NonNull
@@ -35,17 +37,21 @@ public class FirestoreAInvAdapter extends FirestoreRecyclerAdapter<FirestoreInvi
     }
 
     class FirestoreAInviteHolder extends RecyclerView.ViewHolder {
-        TextView inviUser;
+        TextView host;
+        TextView eventName;
+        TextView eventDate;
+        TextView guest, eventID, eventLocation, status;
 
-        TextView inviTitle;
-
-        TextView inviTitle2;
 
         public FirestoreAInviteHolder(@NonNull View itemView) {
             super(itemView);
-            inviUser = itemView.findViewById(R.id.inviUser);
-            inviTitle = itemView.findViewById(R.id.inviTitle);
-            inviTitle2 = itemView.findViewById(R.id.inviTitle2);
+            host = itemView.findViewById(R.id.host);
+            eventName = itemView.findViewById(R.id.eventName);
+            eventDate = itemView.findViewById(R.id.eventDate);
+            guest = itemView.findViewById(R.id.guestTxt);
+            eventID = itemView.findViewById(R.id.eventIDTxt);
+            eventLocation = itemView.findViewById(R.id.eventLocationTxt);
+            status = itemView.findViewById(R.id.statusTxt);
         }
     }
 }
