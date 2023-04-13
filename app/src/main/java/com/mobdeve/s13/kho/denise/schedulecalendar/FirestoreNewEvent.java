@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,6 +26,8 @@ public class FirestoreNewEvent extends AppCompatActivity {
     private EditText EStartTIme;
     private EditText EEndTIme;
     private NumberPicker numberPicker;
+
+    private String Tag;
 
 
     @Override
@@ -63,13 +67,17 @@ public class FirestoreNewEvent extends AppCompatActivity {
     }
 
     private void saveNote() {
+        SharedPreferences sp = getSharedPreferences("USERNAME",Context.MODE_PRIVATE);
+        String user=sp.getString("NAME_KEY","Anon");
+
         String name = EName.getText().toString();
         String location = ELocation.getText().toString();
         String date = EDate.getText().toString();
         int prio = numberPicker.getValue();
 
         CollectionReference eventRef = FirebaseFirestore.getInstance().collection("Event");
-        eventRef.add(new FirestoreEvent(name,date,location,prio));
+        eventRef.add(new FirestoreEvent(user,name,date,location,prio));
+
         Toast.makeText(this,"Event added", Toast.LENGTH_SHORT).show();
         finish();
     }

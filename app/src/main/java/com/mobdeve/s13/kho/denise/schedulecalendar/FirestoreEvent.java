@@ -2,6 +2,7 @@ package com.mobdeve.s13.kho.denise.schedulecalendar;
 
 public class FirestoreEvent {
 
+    private String User;
     private String LNameTxt;
     private String LDateTxt;
     private String LLocationTxt;
@@ -11,11 +12,21 @@ public class FirestoreEvent {
         //empty
     }
 
-    public FirestoreEvent(String LNameTxt, String LDateTxt, String LLocationTxt, int LPrio) {
+    public FirestoreEvent(String User,String LNameTxt, String LDateTxt, String LLocationTxt, int LPrio) {
+        this.User=User;
         this.LNameTxt = LNameTxt;
         this.LDateTxt = LDateTxt;
         this.LLocationTxt = LLocationTxt;
         this.LPrio = LPrio;
+    }
+
+    public void setUser(String User)
+    {
+        this.User=User;
+    }
+    public String getUser()
+    {
+        return User;
     }
 
     public String getLNameTxt() {
