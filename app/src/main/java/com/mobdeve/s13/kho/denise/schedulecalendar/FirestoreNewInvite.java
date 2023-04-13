@@ -34,7 +34,8 @@ public class FirestoreNewInvite extends AppCompatActivity {
 
         Guest = findViewById(R.id.ESendInv);
 
-
+//      TODO Make it so that eventID is with the other variables in saveInvite, use shared prefs as well
+//      TODO delete stuff from here
         String eventName = "Basketball";
         String eventDate = "25/08/2023";
         String eventLocation = "Manila";
@@ -57,6 +58,7 @@ public class FirestoreNewInvite extends AppCompatActivity {
                         }
                     }
                 });
+//      TODO to here
     }
 
     @Override
@@ -88,16 +90,13 @@ public class FirestoreNewInvite extends AppCompatActivity {
         SharedPreferences spEvent = getSharedPreferences("EVENT_ID", Context.MODE_PRIVATE);
         String eventID = spEvent.getString("EVENT_ID_KEY", "null");
 
-
         String guest = Guest.getText().toString();
+        String status = "Pending";
+
+//      TODO modify this so that it uses shared prefs instead of hard coded
         String eventName = "Basketball";
         String eventDate = "25/08/2023";
         String eventLocation = "Manila";
-        String status = "Pending";
-
-
-
-
 
         CollectionReference userRef = FirebaseFirestore.getInstance().collection("Users");
         userRef.whereEqualTo("username", guest)

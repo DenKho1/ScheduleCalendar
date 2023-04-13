@@ -21,12 +21,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.model.Document;
-import com.google.protobuf.Api;
+import com.google.firestore.v1.Document;
+
+import java.util.Map;
 
 import javax.annotation.Nullable;
 
@@ -122,18 +124,49 @@ public class FirestoreAInv extends AppCompatActivity {
         adapter = new FirestoreAInvAdapter(options, new OnRejectInviteClick() {
             @Override
             public void onRejectClick(int position) {
-                String eventID = adapter.getSnapshots().getSnapshot(position).getId();
+                String inviteID = adapter.getSnapshots().getSnapshot(position).getId();
                 CollectionReference inviteRef = FirebaseFirestore.getInstance().collection("Invite");
-                inviteRef.document(eventID).update("status", "Rejected");
+                inviteRef.document(inviteID).update("status", "Rejected");
                 Toast.makeText(FirestoreAInv.this, "Invite Rejected", Toast.LENGTH_SHORT).show();
             }
         }, new OnAcceptInviteClick() {
             @Override
             public void onAcceptClick(int position) {
-                String eventID = adapter.getSnapshots().getSnapshot(position).getId();
+                String inviteID = adapter.getSnapshots().getSnapshot(position).getId();
                 CollectionReference inviteRef = FirebaseFirestore.getInstance().collection("Invite");
-                inviteRef.document(eventID).update("status", "Accepted");
+                inviteRef.document(inviteID).update("status", "Accepted");
+                inviteRef.document(inviteID)
+                         .get()
+                         .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                             @Override
+                             public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                 if(documentSnapshot.exists()) {
+                                    String eventName = documentSnapshot.getString("eventName");
+                                    String eventLocation = documentSnapshot.getString("eventLocation");
+                                    String eventDate = documentSnapshot.getString("eventDate");
+
+                                    SharedPreferences spEvent = getSharedPreferences("EVENT_DETAILS", Context.MODE_PRIVATE);
+                                    spEvent.edit().putString("EVENT_NAME_KEY", eventName).apply();
+                                    spEvent.edit().putString("EVENT_LOCATION_KEY", eventLocation).apply();
+                                    spEvent.edit().putString("EVENT_DATE_KEY", eventDate).apply();
+                                 }
+                             }
+                         });
+
+                SharedPreferences spEvent = getSharedPreferences("EVENT_DETAILS", Context.MODE_PRIVATE);
+                String eventName = spEvent.getString("EVENT_NAME_KEY", "null");
+                String eventLocation = spEvent.getString("EVENT_LOCATION_KEY", "null");
+                String eventDate = spEvent.getString("EVENT_DATE_KEY", "null");
+
+                SharedPreferences spUser = getSharedPreferences("USERNAME", Context.MODE_PRIVATE);
+                String user = spUser.getString("NAME_KEY", "null");
+//              TODO yea change this prio, idk
+                int prio = 5;
+
+                CollectionReference eventRef = FirebaseFirestore.getInstance().collection("Event");
+                eventRef.add(new FirestoreEvent(user, eventName, eventDate, eventLocation, prio));
                 Toast.makeText(FirestoreAInv.this, "Invite Accepted", Toast.LENGTH_SHORT).show();
+                spEvent.edit().clear();
             }
         });
 
