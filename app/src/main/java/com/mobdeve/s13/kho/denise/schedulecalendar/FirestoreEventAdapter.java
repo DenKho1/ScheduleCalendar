@@ -1,5 +1,8 @@
 package com.mobdeve.s13.kho.denise.schedulecalendar;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +40,7 @@ public class FirestoreEventAdapter extends FirestoreRecyclerAdapter<FirestoreEve
         return new FirestoreEventHolder(v);
     }
 
-    class FirestoreEventHolder extends RecyclerView.ViewHolder {
+    class FirestoreEventHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
             TextView LNameTxt;
             TextView LDateTxt;
             TextView LLocationTxt;
@@ -51,6 +54,13 @@ public class FirestoreEventAdapter extends FirestoreRecyclerAdapter<FirestoreEve
             LDateTxt = itemView.findViewById(R.id.LDateTxt);
             LLocationTxt = itemView.findViewById(R.id.LLocationTxt);
             Lprio = itemView.findViewById(R.id.LPrio);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i=new Intent(view.getContext(), EditEvent.class);
+            view.getContext().startActivity(i);
         }
     }
 }
