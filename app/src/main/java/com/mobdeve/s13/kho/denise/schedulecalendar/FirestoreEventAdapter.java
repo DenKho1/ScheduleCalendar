@@ -60,6 +60,7 @@ public class FirestoreEventAdapter extends FirestoreRecyclerAdapter<FirestoreEve
         @Override
         public void onClick(View view) {
             Intent i=new Intent(view.getContext(), EditEvent.class);
+
             view.getContext().startActivity(i);
         }
     }

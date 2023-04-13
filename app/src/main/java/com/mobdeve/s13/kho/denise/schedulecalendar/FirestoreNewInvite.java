@@ -94,9 +94,10 @@ public class FirestoreNewInvite extends AppCompatActivity {
         String status = "Pending";
 
 //      TODO modify this so that it uses shared prefs instead of hard coded
-        String eventName = "Basketball";
-        String eventDate = "25/08/2023";
-        String eventLocation = "Manila";
+        SharedPreferences spE=getSharedPreferences("EVENT_DETAILS", Context.MODE_PRIVATE);
+        String eventName = spE.getString("EVENT_NAME_KEY","EVENT");
+        String eventDate = spE.getString("EVENT_DATE_KEY","0/0/0000");
+        String eventLocation = spE.getString("EVENT_LOCATION_KEY","EARTH");
 
         CollectionReference userRef = FirebaseFirestore.getInstance().collection("Users");
         userRef.whereEqualTo("username", guest)
