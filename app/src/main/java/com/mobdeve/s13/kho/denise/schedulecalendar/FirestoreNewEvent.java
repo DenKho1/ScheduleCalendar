@@ -43,8 +43,11 @@ public class FirestoreNewEvent extends AppCompatActivity {
         EEndTIme = findViewById(R.id.EEndTIme);
         numberPicker = findViewById(R.id.number_picker_priority);
 
+
         numberPicker.setMinValue(1);
         numberPicker.setMaxValue(10);
+
+
     }
 
     @Override

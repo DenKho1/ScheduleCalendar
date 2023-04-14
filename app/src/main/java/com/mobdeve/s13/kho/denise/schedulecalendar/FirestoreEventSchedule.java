@@ -1,7 +1,9 @@
 package com.mobdeve.s13.kho.denise.schedulecalendar;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -18,7 +20,7 @@ import com.google.firebase.firestore.Query;
 
 public class FirestoreEventSchedule extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference eventRef = db.collection("Event");
+
 
     private FirestoreEventAdapter adapter;
 
@@ -51,7 +53,14 @@ public class FirestoreEventSchedule extends AppCompatActivity {
     }
 
     private void setUpRecyclerView() {
-        Query query = eventRef.orderBy("lprio", Query.Direction.DESCENDING);
+        SharedPreferences sp=getSharedPreferences("USERNAME",Context.MODE_PRIVATE);
+        String name=sp.getString("NAME_KEY","");
+
+        CollectionReference eventRef = db.collection("Event");
+        //fix this
+        Query query = eventRef.whereEqualTo("user",name);
+
+       //Query query = eventRef.orderBy("lprio", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<FirestoreEvent> options = new FirestoreRecyclerOptions.Builder<FirestoreEvent>()
                 .setQuery(query, FirestoreEvent.class)
@@ -61,7 +70,7 @@ public class FirestoreEventSchedule extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.schedRecycler);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new WrapContentLinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new WrapContentLinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
     }
 

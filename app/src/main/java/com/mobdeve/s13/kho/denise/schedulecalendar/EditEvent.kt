@@ -12,7 +12,7 @@ class EditEvent : AppCompatActivity() {
         val reg = findViewById<Button>(R.id.FinishEditBtn)
 
         reg.setOnClickListener() {
-            val intent = Intent(this, EventSchedule::class.java)
+            val intent = Intent(this, FirestoreEventSchedule::class.java)
             startActivity(intent)
         }
     }

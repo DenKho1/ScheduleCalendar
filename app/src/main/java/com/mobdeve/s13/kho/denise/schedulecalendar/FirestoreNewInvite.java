@@ -36,9 +36,10 @@ public class FirestoreNewInvite extends AppCompatActivity {
 
 //      TODO Make it so that eventID is with the other variables in saveInvite, use shared prefs as well
 //      TODO delete stuff from here
-        String eventName = "Basketball";
-        String eventDate = "25/08/2023";
-        String eventLocation = "Manila";
+        SharedPreferences spE=getSharedPreferences("EVENT_DETAILS", Context.MODE_PRIVATE);
+        String eventName = spE.getString("EVENT_NAME_KEY","EVENT");
+        String eventDate = spE.getString("EVENT_DATE_KEY","0/0/0000");
+        String eventLocation = spE.getString("EVENT_LOCATION_KEY","EARTH");
 
         CollectionReference eventRef = FirebaseFirestore.getInstance().collection("Event");
         eventRef.whereEqualTo("lnameTxt", eventName)
@@ -58,6 +59,10 @@ public class FirestoreNewInvite extends AppCompatActivity {
                         }
                     }
                 });
+
+        SharedPreferences spI=getSharedPreferences("EVENT_ID", Context.MODE_PRIVATE);
+        String ID=spI.getString("EVENT_ID_KEY","000");
+        spE.edit().putString("EVENT_ID_KEY",ID).apply();
 //      TODO to here
     }
 
