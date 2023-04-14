@@ -79,7 +79,7 @@ public class FirestoreNewEvent extends AppCompatActivity {
         int prio = numberPicker.getValue();
 
         CollectionReference eventRef = FirebaseFirestore.getInstance().collection("Event");
-        eventRef.add(new FirestoreEvent(user,name,date,location,prio));
+        eventRef.add(new FirestoreEvent(user,user,name,date,location,prio));
 
         Toast.makeText(this,"Event added", Toast.LENGTH_SHORT).show();
         finish();

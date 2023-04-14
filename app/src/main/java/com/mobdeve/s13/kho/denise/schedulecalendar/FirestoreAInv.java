@@ -164,7 +164,26 @@ public class FirestoreAInv extends AppCompatActivity {
                 int prio = 5;
 
                 CollectionReference eventRef = FirebaseFirestore.getInstance().collection("Event");
-                eventRef.add(new FirestoreEvent(user, eventName, eventDate, eventLocation, prio));
+
+                CollectionReference IDRef = FirebaseFirestore.getInstance().collection("Invite");
+
+                IDRef.document(inviteID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+
+                            SharedPreferences sp=getSharedPreferences("HOST", Context.MODE_PRIVATE);
+                            sp.edit().putString("HOST_KEY",documentSnapshot.getString("host")).apply();
+
+                        }
+                    }
+                });
+
+                SharedPreferences sp=getSharedPreferences("HOST", Context.MODE_PRIVATE);
+                String host=sp.getString("HOST_KEY","");
+                Log.d("AcceptInvite:","host="+host);
+
+                eventRef.add(new FirestoreEvent(host,user, eventName, eventDate, eventLocation, prio));
                 Toast.makeText(FirestoreAInv.this, "Invite Accepted", Toast.LENGTH_SHORT).show();
                 spEvent.edit().clear();
             }
