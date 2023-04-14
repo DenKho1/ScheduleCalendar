@@ -42,9 +42,9 @@ class EventDetailsHost : AppCompatActivity() {
         if(!documents.isEmpty)
         {
             val document=documents.first()
-            name.setText(document.data["LNameTxt"].toString())
-            location.setText(document.data["LLocationTxt"].toString())
-            date.setText(document.data["LDateTxt"].toString())
+            name.setText(document.data["lnameTxt"].toString())
+            location.setText(document.data["llocationTxt"].toString())
+            date.setText(document.data["ldateTxt"].toString())
 
         }
 
