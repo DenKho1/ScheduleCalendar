@@ -1,5 +1,6 @@
 package com.mobdeve.s13.kho.denise.schedulecalendar
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
@@ -16,11 +17,13 @@ import com.google.firebase.firestore.FirebaseFirestore
 class EventDetailsHost : AppCompatActivity() {
     private val hostInviteList: ArrayList<HostInvite> = HostInviteGenerator.genData()
     private lateinit var recyclerView: RecyclerView
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_details_host)
         val edit = findViewById<Button>(R.id.EditEBtn)
         val send = findViewById<Button>(R.id.SendInvitesBtn)
+        val delete=findViewById<Button>(R.id.DeleteBtn)
 
         val name =findViewById<EditText>(R.id.EName)
         val location=findViewById<EditText>(R.id.ELocation)
@@ -121,6 +124,41 @@ class EventDetailsHost : AppCompatActivity() {
             val intent = Intent(this, FirestoreNewInvite::class.java)
             startActivity(intent)
         }
+
+                delete.setOnClickListener(){
+                    val sp = getSharedPreferences("HOST", MODE_PRIVATE)
+                    val host=sp.getString("HOST_KEY","N/A")
+                    val sp2 = getSharedPreferences("USERNAME", MODE_PRIVATE)
+                    val named=sp2.getString("NAME_KEY","Anon")
+
+                    if(host.equals(named))
+                    {
+                        val query = eventRef.whereEqualTo("lnameTxt", title)
+                            .whereEqualTo("ldateTxt", time)
+                            .whereEqualTo("llocationTxt", loc)
+                            .whereEqualTo("user", user).limit(1)
+
+                        query.get()
+                            .addOnSuccessListener { querySnapshot ->
+                                if (!querySnapshot.isEmpty) {
+                                    val docRef = db.collection("Event").document(querySnapshot.documents[0].id)
+                                    docRef.delete().addOnSuccessListener {
+                                        Log.d(TAG, "DocumentSnapshot successfully deleted!")
+                                    }
+                                        .addOnFailureListener { e ->
+                                            Log.w(TAG, "Error deleting document", e)
+                                        }
+                                }
+                            }
+                        Toast.makeText(this, "Delete Successful!", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, FirestoreEventSchedule::class.java)
+                        startActivity(intent)
+                    }
+                    else
+                    {
+                        Toast.makeText(this, "You Cannot Delete this Event", Toast.LENGTH_SHORT).show()
+                    }
+                }
     }
 }
 }
