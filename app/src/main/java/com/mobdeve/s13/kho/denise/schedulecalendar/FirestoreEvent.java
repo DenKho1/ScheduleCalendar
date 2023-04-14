@@ -7,7 +7,51 @@ public class FirestoreEvent {
     private String LNameTxt;
     private String LDateTxt;
     private String LLocationTxt;
+    private String EDesc;
+    private String EStart;
+
+    public void setHost(String host) {
+        Host = host;
+    }
+
+    public String getEDesc() {
+        return EDesc;
+    }
+
+    public void setEDesc(String EDesc) {
+        this.EDesc = EDesc;
+    }
+
+    public String getEStart() {
+        return EStart;
+    }
+
+    public void setEStart(String EStart) {
+        this.EStart = EStart;
+    }
+
+    public String getEEnd() {
+        return EEnd;
+    }
+
+    public void setEEnd(String EEnd) {
+        this.EEnd = EEnd;
+    }
+
+    private String EEnd;
     private int LPrio;
+
+    public FirestoreEvent(String host, String user, String LNameTxt, String LDateTxt, String LLocationTxt, String EDesc, String EStart, String EEnd, int LPrio) {
+        Host = host;
+        User = user;
+        this.LNameTxt = LNameTxt;
+        this.LDateTxt = LDateTxt;
+        this.LLocationTxt = LLocationTxt;
+        this.EDesc = EDesc;
+        this.EStart = EStart;
+        this.EEnd = EEnd;
+        this.LPrio = LPrio;
+    }
 
     public FirestoreEvent() {
         //empty

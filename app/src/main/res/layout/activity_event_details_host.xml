@@ -49,8 +49,7 @@
                     android:background="#000000"
                     android:backgroundTint="#FFFFFF"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="MOBDEVE" />
+                    android:inputType="textPersonName" />
 
                 <TextView
                     android:id="@+id/ELocationTxt"
@@ -69,8 +68,7 @@
                     android:background="#000000"
                     android:backgroundTint="#FFFFFF"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="G301" />
+                    android:inputType="textPersonName" />
 
                 <TextView
                     android:id="@+id/EDateTxt"
@@ -89,8 +87,7 @@
                     android:background="#000000"
                     android:backgroundTint="#FFFFFF"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="03/17/2023" />
+                    android:inputType="textPersonName" />
 
                 <TextView
                     android:id="@+id/EDescTxt"
@@ -108,8 +105,7 @@
                     android:background="#000000"
                     android:backgroundTint="#FFFFFF"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Project Deliverable 2" />
+                    android:inputType="textPersonName" />
 
             </LinearLayout>
 
@@ -145,8 +141,7 @@
                         android:background="#000000"
                         android:backgroundTint="#FFFFFF"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="00:00" />
+                        android:inputType="textPersonName" />
 
                     <TextView
                         android:id="@+id/EEndTimeTxt"
@@ -165,8 +160,7 @@
                         android:background="#000000"
                         android:backgroundTint="#FFFFFF"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="23:59" />
+                        android:inputType="textPersonName" />
 
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>

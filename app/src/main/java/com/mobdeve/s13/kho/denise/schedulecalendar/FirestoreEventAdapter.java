@@ -35,7 +35,6 @@ public class FirestoreEventAdapter extends FirestoreRecyclerAdapter<FirestoreEve
         holder.LLocationTxt.setText(model.getLLocationTxt());
         holder.Lprio.setText(String.valueOf(model.getLPrio()));
 
-
     }
 
     @NonNull
