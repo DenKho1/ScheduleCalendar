@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -38,7 +39,7 @@ class EventDetailsHost : AppCompatActivity() {
         val user=sp2.getString("NAME_KEY", "Anon")
 
         val db = FirebaseFirestore.getInstance()
-        d
+
         val eventRef= db.collection("Event")
         val query = eventRef.whereEqualTo("lnameTxt",title)
             .whereEqualTo("ldateTxt",time)
@@ -61,44 +62,43 @@ class EventDetailsHost : AppCompatActivity() {
         this.recyclerView.layoutManager = LinearLayoutManager(this)
 
         edit.setOnClickListener() {
-            val editquery = eventRef.whereEqualTo("lnameTxt",title)
-                .whereEqualTo("ldateTxt",time).limit
+
+            val eventRef= db.collection("Event")
+            val query = eventRef.whereEqualTo("lnameTxt",title)
+                .whereEqualTo("ldateTxt",time)
                 .whereEqualTo("llocationTxt",loc)
-                .whereEqualTo("user",user).get()
-                .addOnSuccessListener {documents->
-                    if(!documents.isEmpty)
+                .whereEqualTo("user",user).limit(1);
+
+            query.get()
+                .addOnSuccessListener { querySnapshot ->
+                    if(!querySnapshot.isEmpty)
                     {
-                        val document=documents.first()
-                        name.setText(document.data["lnameTxt"].toString())
-                        location.setText(document.data["llocationTxt"].toString())
-                        date.setText(document.data["ldateTxt"].toString())
-                        desc.setText(document.data["edesc"].toString())
-                        start.setText(document.data["estart"].toString())
-                        end.setText(document.data["eend"].toString())
-                    }
-            db.runBatch { batch ->
-                editquery.get()
-                    .addOnSuccessListener { querySnapshot ->
-                        if (!querySnapshot.isEmpty) {
-                            val docRef = db.collection("myCollection").document(querySnapshot.documents[0].id)
-                            batch.update(docRef, "field1", "new value")
-                            batch.update(docRef, "field2", 42)
-                            batch.commit()
-                                .addOnSuccessListener {
-                                    Log.d(TAG, "Batch update successful!")
-                                }
-                                .addOnFailureListener { e ->
-                                    Log.w(TAG, "Error updating document", e)
-                                }
-                        } else {
-                            Log.d(TAG, "No documents matched the query.")
+                        val docRef=db.collection("Event").document(querySnapshot.documents[0].id)
+                        docRef.update("lnameTxt",name.text.toString()).addOnSuccessListener {
+                            Log.d(TAG, "Name Update successful!")
+                        }
+                        docRef.update("llocationTxt",location.text.toString()).addOnSuccessListener {
+                            Log.d(TAG, "Location Update successful!")
+                        }
+                        docRef.update("ldateTxt",date.text.toString()).addOnSuccessListener {
+                            Log.d(TAG, "Date Update successful!")
+                        }
+                        docRef.update("edesc",desc.text.toString()).addOnSuccessListener {
+                            Log.d(TAG, "Desc Update successful!")
+                        }
+                        docRef.update("estart",start.text.toString()).addOnSuccessListener {
+                            Log.d(TAG, "Start Update successful!")
+                        }
+                        docRef.update("eend",end.text.toString()).addOnSuccessListener {
+                            Log.d(TAG, "End Update successful!")
                         }
                     }
-                    .addOnFailureListener { e ->
-                        Log.w(TAG, "Error getting documents", e)
-                    }
-            }
+                }
+            Toast.makeText(this, "Update Successful!", Toast.LENGTH_SHORT).show()
+            val intent=Intent(this, FirestoreEventSchedule::class.java)
+            startActivity(intent)
         }
+
 
         send.setOnClickListener() {
             val intent = Intent(this, EventDetailsHostSendInv::class.java)
