@@ -55,6 +55,10 @@ class EventDetailsHost : AppCompatActivity() {
             desc.setText(document.data["edesc"].toString())
             start.setText(document.data["estart"].toString())
             end.setText(document.data["eend"].toString())
+
+            val sp = getSharedPreferences("HOST", MODE_PRIVATE)
+            sp.edit().putString("HOST_KEY", document.data["host"].toString()).apply()
+
         }
 
         this.recyclerView = findViewById(R.id.invRecyclerView)
@@ -62,46 +66,59 @@ class EventDetailsHost : AppCompatActivity() {
         this.recyclerView.layoutManager = LinearLayoutManager(this)
 
         edit.setOnClickListener() {
+            val sp = getSharedPreferences("HOST", MODE_PRIVATE)
+            val host=sp.getString("HOST_KEY","N/A")
+            val sp2 = getSharedPreferences("USERNAME", MODE_PRIVATE)
+            val named=sp2.getString("NAME_KEY","Anon")
 
-            val eventRef= db.collection("Event")
-            val query = eventRef.whereEqualTo("lnameTxt",title)
-                .whereEqualTo("ldateTxt",time)
-                .whereEqualTo("llocationTxt",loc)
-                .whereEqualTo("user",user).limit(1);
+            if(host.equals(named)) {
+                val eventRef = db.collection("Event")
+                val query = eventRef.whereEqualTo("lnameTxt", title)
+                    .whereEqualTo("ldateTxt", time)
+                    .whereEqualTo("llocationTxt", loc)
+                    .whereEqualTo("user", user).limit(1);
 
-            query.get()
-                .addOnSuccessListener { querySnapshot ->
-                    if(!querySnapshot.isEmpty)
-                    {
-                        val docRef=db.collection("Event").document(querySnapshot.documents[0].id)
-                        docRef.update("lnameTxt",name.text.toString()).addOnSuccessListener {
-                            Log.d(TAG, "Name Update successful!")
-                        }
-                        docRef.update("llocationTxt",location.text.toString()).addOnSuccessListener {
-                            Log.d(TAG, "Location Update successful!")
-                        }
-                        docRef.update("ldateTxt",date.text.toString()).addOnSuccessListener {
-                            Log.d(TAG, "Date Update successful!")
-                        }
-                        docRef.update("edesc",desc.text.toString()).addOnSuccessListener {
-                            Log.d(TAG, "Desc Update successful!")
-                        }
-                        docRef.update("estart",start.text.toString()).addOnSuccessListener {
-                            Log.d(TAG, "Start Update successful!")
-                        }
-                        docRef.update("eend",end.text.toString()).addOnSuccessListener {
-                            Log.d(TAG, "End Update successful!")
+                query.get()
+                    .addOnSuccessListener { querySnapshot ->
+                        if (!querySnapshot.isEmpty) {
+                            val docRef =
+                                db.collection("Event").document(querySnapshot.documents[0].id)
+                            docRef.update("lnameTxt", name.text.toString()).addOnSuccessListener {
+                                Log.d(TAG, "Name Update successful!")
+                            }
+                            docRef.update("llocationTxt", location.text.toString())
+                                .addOnSuccessListener {
+                                    Log.d(TAG, "Location Update successful!")
+                                }
+                            docRef.update("ldateTxt", date.text.toString()).addOnSuccessListener {
+                                Log.d(TAG, "Date Update successful!")
+                            }
+                            docRef.update("edesc", desc.text.toString()).addOnSuccessListener {
+                                Log.d(TAG, "Desc Update successful!")
+                            }
+                            docRef.update("estart", start.text.toString()).addOnSuccessListener {
+                                Log.d(TAG, "Start Update successful!")
+                            }
+                            docRef.update("eend", end.text.toString()).addOnSuccessListener {
+                                Log.d(TAG, "End Update successful!")
+                            }
                         }
                     }
-                }
-            Toast.makeText(this, "Update Successful!", Toast.LENGTH_SHORT).show()
-            val intent=Intent(this, FirestoreEventSchedule::class.java)
-            startActivity(intent)
+                Toast.makeText(this, "Update Successful!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, FirestoreEventSchedule::class.java)
+                startActivity(intent)
+            }
+
+            else
+            {
+                Toast.makeText(this, "You Cannot Edit this Event", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
 
         send.setOnClickListener() {
-            val intent = Intent(this, EventDetailsHostSendInv::class.java)
+            val intent = Intent(this, FirestoreNewInvite::class.java)
             startActivity(intent)
         }
     }
