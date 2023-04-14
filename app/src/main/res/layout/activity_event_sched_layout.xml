@@ -23,6 +23,7 @@
             android:fontFamily="sans-serif-medium"
             android:text="1"
             android:textColor="#F4F3F3" />
+
     </RelativeLayout>
 
     <TextView
@@ -92,10 +93,20 @@
         android:layout_width="86dp"
         android:layout_height="73dp"
         android:layout_marginStart="20dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
         app:layout_constraintStart_toStartOf="@+id/relativeLayout"
         app:layout_constraintTop_toTopOf="@+id/relativeLayout"
         app:layout_constraintVertical_bias="0.43"
         app:srcCompat="@drawable/crown" />
+
+    <ImageButton
+        android:id="@+id/deleteBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/baseline_delete_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

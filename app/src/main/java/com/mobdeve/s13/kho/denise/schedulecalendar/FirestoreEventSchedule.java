@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -66,7 +67,15 @@ public class FirestoreEventSchedule extends AppCompatActivity {
                 .setQuery(query, FirestoreEvent.class)
                 .build();
 
-        adapter = new FirestoreEventAdapter(options);
+        adapter = new FirestoreEventAdapter(options, new OnDeleteButtonClick() {
+            @Override
+            public void onDeleteButtonClick(int position) {
+                String eventID = adapter.getSnapshots().getSnapshot(position).getId();
+                CollectionReference eventRef = FirebaseFirestore.getInstance().collection("Event");
+                eventRef.document(eventID).delete();
+                Toast.makeText(FirestoreEventSchedule.this, "Event Rejected", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         RecyclerView recyclerView = findViewById(R.id.schedRecycler);
         recyclerView.setHasFixedSize(true);

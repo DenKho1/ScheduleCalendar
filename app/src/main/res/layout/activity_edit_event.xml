@@ -50,6 +50,7 @@
                     android:background="#000000"
                     android:backgroundTint="#FFFFFF"
                     android:ems="10"
+                    android:hint="Enter Event Name Here"
                     android:inputType="textPersonName"
                     android:text="Enter Event Name Here" />
 
@@ -70,6 +71,7 @@
                     android:background="#000000"
                     android:backgroundTint="#FFFFFF"
                     android:ems="10"
+                    android:hint="Enter Event Location Here"
                     android:inputType="textPersonName"
                     android:text="Enter Event Location Here" />
 
@@ -90,6 +92,7 @@
                     android:background="#000000"
                     android:backgroundTint="#FFFFFF"
                     android:ems="10"
+                    android:hint="Enter Event Date Here"
                     android:inputType="date" />
 
                 <TextView
@@ -108,8 +111,8 @@
                     android:background="#000000"
                     android:backgroundTint="#FFFFFF"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Enter Event Description Here" />
+                    android:hint="Enter Event Description Here"
+                    android:inputType="textPersonName" />
 
             </LinearLayout>
 
