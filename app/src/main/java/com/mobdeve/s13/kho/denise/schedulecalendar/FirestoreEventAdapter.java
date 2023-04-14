@@ -23,10 +23,9 @@ public class FirestoreEventAdapter extends FirestoreRecyclerAdapter<FirestoreEve
 
     private Context c;
     private SharedPreferences sp;
-    private OnDeleteButtonClick onDeleteButtonClick;
-    public FirestoreEventAdapter(@NonNull FirestoreRecyclerOptions<FirestoreEvent> options, OnDeleteButtonClick onDeleteButtonClick) {
+    public FirestoreEventAdapter(@NonNull FirestoreRecyclerOptions<FirestoreEvent> options) {
         super(options);
-        this.onDeleteButtonClick = onDeleteButtonClick;
+
     }
 
     @Override
@@ -64,12 +63,6 @@ public class FirestoreEventAdapter extends FirestoreRecyclerAdapter<FirestoreEve
             Lprio = itemView.findViewById(R.id.LPrio);
             itemView.setOnClickListener(this);
 
-            itemView.findViewById(R.id.deleteBtn).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onDeleteButtonClick.onDeleteButtonClick(getAbsoluteAdapterPosition());
-                }
-            });
         }
 
         @Override

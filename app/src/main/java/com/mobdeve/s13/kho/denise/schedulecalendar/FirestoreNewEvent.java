@@ -34,7 +34,7 @@ public class FirestoreNewEvent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         EName = findViewById(R.id.EName);
         ELocation = findViewById(R.id.ELocation);
         EDate = findViewById(R.id.EDate);

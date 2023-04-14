@@ -33,6 +33,7 @@ public class FirestoreEventSchedule extends AppCompatActivity {
         setUpRecyclerView();
 
         ImageButton button = (ImageButton) findViewById(R.id.AddEvnt);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +48,7 @@ public class FirestoreEventSchedule extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent sendInvite = new Intent(FirestoreEventSchedule.this, FirestoreNewInvite.class);
+                Intent sendInvite = new Intent(FirestoreEventSchedule.this, Account.class);
                 startActivity(sendInvite);
             }
         });
@@ -67,15 +68,7 @@ public class FirestoreEventSchedule extends AppCompatActivity {
                 .setQuery(query, FirestoreEvent.class)
                 .build();
 
-        adapter = new FirestoreEventAdapter(options, new OnDeleteButtonClick() {
-            @Override
-            public void onDeleteButtonClick(int position) {
-                String eventID = adapter.getSnapshots().getSnapshot(position).getId();
-                CollectionReference eventRef = FirebaseFirestore.getInstance().collection("Event");
-                eventRef.document(eventID).delete();
-                Toast.makeText(FirestoreEventSchedule.this, "Event Rejected", Toast.LENGTH_SHORT).show();
-            }
-        });
+        adapter = new FirestoreEventAdapter(options);
 
         RecyclerView recyclerView = findViewById(R.id.schedRecycler);
         recyclerView.setHasFixedSize(true);
